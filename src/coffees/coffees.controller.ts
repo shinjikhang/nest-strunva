@@ -1,6 +1,7 @@
 import {
   Body,
   Controller,
+  Delete,
   Get,
   HttpCode,
   HttpStatus,
@@ -27,8 +28,7 @@ export class CoffeesController {
 
   @Get(':id')
   getCoffee(@Param('id') id: number): any {
-    console.log(typeof id);
-    return this.coffeeService.findOne('' + id);
+    return this.coffeeService.findOne(id);
   }
 
   @Post()
@@ -40,5 +40,10 @@ export class CoffeesController {
   @Put(':id')
   update(@Param('id') id: string, @Body() updateDto: UpdateCoffeeDto) {
     return this.coffeeService.update(id, updateDto);
+  }
+
+  @Delete(':id')
+  delete(@Param('id') id: number) {
+    return this.coffeeService.remove(id);
   }
 }

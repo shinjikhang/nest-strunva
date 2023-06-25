@@ -1,0 +1,1 @@
+typeorm migration:run -- -d path

@@ -1,3 +1,4 @@
+import { Public } from './../common/decorators/public.decorator';
 import {
   Body,
   Controller,
@@ -17,11 +18,13 @@ import { PaginationQueryDto } from '../common/dto/paginaton-query.dto';
 export class CoffeesController {
   constructor(private readonly coffeeService: CoffeesService) {}
 
-  @Get('')
+  @Public()
+  @Get()
   getAll(@Query() paginationQuery: PaginationQueryDto) {
     return this.coffeeService.findAll(paginationQuery);
   }
 
+  @Public()
   @Get(':id')
   getCoffee(@Param('id') id: number): any {
     return this.coffeeService.findOne(id);

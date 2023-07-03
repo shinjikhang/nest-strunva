@@ -1,4 +1,4 @@
-import { PartialType, PickType } from '@nestjs/mapped-types';
+import { PartialType, PickType } from '@nestjs/swagger';
 import { CreateCoffeeDto } from './create-coffee.dto';
 import { IsArray, IsNumber, IsOptional, IsString } from 'class-validator';
 

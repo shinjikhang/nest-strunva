@@ -13,14 +13,19 @@ import { CoffeesService } from './coffees.service';
 import { CreateCoffeeDto } from './dto/create-coffee.dto';
 import { UpdateCoffeeDto } from './dto/update-coffee.dto';
 import { PaginationQueryDto } from '../common/dto/paginaton-query.dto';
+import { ApiResponse, ApiTags } from '@nestjs/swagger';
+import { Coffee } from './entities/coffee.entity';
 
 @Controller('coffee')
+@ApiTags('Coffee')
 export class CoffeesController {
   constructor(private readonly coffeeService: CoffeesService) {}
 
+  @ApiResponse({ status: 403, description: 'Forbiden' })
   @Public()
   @Get()
-  getAll(@Query() paginationQuery: PaginationQueryDto) {
+  async getAll(@Query() paginationQuery: PaginationQueryDto) {
+    // await new Promise((resolve) => setTimeout(resolve, 4000)); //await 5s, 3s timeout interceptor
     return this.coffeeService.findAll(paginationQuery);
   }
 

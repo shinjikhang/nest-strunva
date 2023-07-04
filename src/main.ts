@@ -18,6 +18,7 @@ async function bootstrap() {
       },
     }),
   );
+  app.setGlobalPrefix('api');
   app.useGlobalFilters(new HttpExceptionFilter()); //apply global filyer http exeption
   app
     .useGlobalInterceptors

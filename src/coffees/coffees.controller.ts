@@ -5,6 +5,7 @@ import {
   Delete,
   Get,
   Param,
+  ParseIntPipe,
   Post,
   Put,
   Query,
@@ -31,7 +32,7 @@ export class CoffeesController {
 
   @Public()
   @Get(':id')
-  getCoffee(@Param('id') id: number): any {
+  getCoffee(@Param('id', ParseIntPipe) id: number): any {
     return this.coffeeService.findOne(id);
   }
 

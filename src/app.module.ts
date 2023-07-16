@@ -7,23 +7,17 @@ import { ConfigModule } from '@nestjs/config';
 import { CommonModule } from './common/common.module';
 import { AuthModule } from './auth/auth.module';
 import { UserModule } from './users/user.module';
+import { ItemsModule } from './items/items.module';
+import { DatabaseModule } from './database/database.module';
 @Module({
   imports: [
-    ConfigModule.forRoot(),
+    ConfigModule.forRoot({ isGlobal: true }),
     CoffeesModule,
-    TypeOrmModule.forRoot({
-      type: 'postgres',
-      host: process.env.DB_HOST,
-      port: +process.env.DB_PORT,
-      username: process.env.DB_USERNAME,
-      password: null,
-      database: process.env.DB_NAME,
-      autoLoadEntities: true,
-      synchronize: false,
-    }),
+    DatabaseModule,
     CommonModule,
     AuthModule,
     UserModule,
+    ItemsModule,
   ],
   controllers: [AppController],
   providers: [AppService],

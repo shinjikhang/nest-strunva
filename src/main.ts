@@ -18,8 +18,8 @@ async function bootstrap() {
       },
     }),
   );
-  app.setGlobalPrefix('api');
-  app.useGlobalFilters(new HttpExceptionFilter()); //apply global filyer http exeption
+  // app.setGlobalPrefix('api');
+  app.useGlobalFilters(new HttpExceptionFilter()); //apply global filter http exeption
   app
     .useGlobalInterceptors
     // new WrapResponseInterceptor(),
